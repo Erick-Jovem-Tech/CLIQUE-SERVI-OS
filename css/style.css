@@ -1,0 +1,164 @@
+/* Estilos gerais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Cards de serviços */
+.servico-card, .prestador-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.servico-card:hover, .prestador-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal */
+.modal-content {
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #1a1a1a;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Efeito de clique duplo */
+.card.double-click {
+    animation: pulse 0.5s;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 50vh;
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+}
+.rounded-circle {
+    border-radius: 50% !important;
+    width: 100px;
+    height: 100px;
+}
+
+
+
+/* Navbar com a cor #f6a843 */
+.navbar {
+    padding: 0.5rem 1rem !important; /* Mais compacto verticalmente */
+}
+
+.navbar-brand img {
+    height: 64px; /* Reduzindo um pouco a logo */
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+/* Itens de menu com fonte maior */
+.navbar-nav .nav-link {
+    font-size: 1.1rem !important; /* Aumentando o tamanho da fonte */
+    padding: 0.5rem 1rem !important;
+    font-weight: 600 !important;
+}
+
+/* Container mais compacto */
+.navbar > .container {
+    max-width: 1300px; /* Limita a largura máxima */
+    padding: 0 10px;
+}
+
+/* Ajuste para mobile */
+@media (max-width: 992px) {
+    .navbar-brand img {
+        height: 50px; /* Logo menor em mobile */
+    }
+    
+    .navbar-nav {
+        padding-top: 0.5rem;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Mantendo as cores existentes */
+.navbar.bg-primary {
+    background-color: #f6a843 !important;
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-nav .nav-link {
+    color: #000000 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #5f5b5b !important;
+}
+.navbar-toggler-icon {
+    color: black;
+}
+/* Botões em azul marinho */
+.btn-primary {
+    background-color: #003366;
+    border-color: #003366;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #002244;
+    border-color: #002244;
+}
+
+.btn-outline-primary {
+    color: #003366;
+    border-color: #003366;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: #003366;
+    border-color: #003366;
+}
+

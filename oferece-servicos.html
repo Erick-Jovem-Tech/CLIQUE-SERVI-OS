@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferecer Serviços - Clique Serviços</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="/img/logomarcafundobranco.svg" type="image/x-icon">  
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="/img/logomarcafundobranco.svg" alt="Clique Serviços" height="100">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="busca-servicos.html">Buscar Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="oferece-servicos.html">Oferecer Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#sobre">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="fw-bold">Oferecer Serviços</h1>
+                <p class="lead">Cadastre seus serviços e encontre clientes que precisam do que você oferece</p>
+                
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form id="formFiltroPrestadores">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="categoriaPrestador" class="form-label">Categoria</label>
+                                    <select id="categoriaPrestador" class="form-select">
+                                        <option value="">Todas as categorias</option>
+                                        <option value="administrativo">Serviços Administrativos</option>
+                                        <option value="limpeza">Limpeza e Conservação</option>
+                                        <option value="logistica">Logística e Transporte</option>
+                                        <option value="industrial">Serviços Industriais</option>
+                                        <option value="especializada">Mão de Obra Especializada</option>
+                                        <option value="obra">Serviços de Apoio à Obra</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="localizacaoPrestador" class="form-label">Localização</label>
+                                    <input type="text" id="localizacaoPrestador" class="form-control" placeholder="Cidade, bairro ou CEP">
+                                </div>
+                                <div class="col-md-8">
+                                    <label for="palavraChavePrestador" class="form-label">Palavra-chave</label>
+                                    <input type="text" id="palavraChavePrestador" class="form-control" placeholder="Digite o serviço que oferece">
+                                </div>
+                                <div class="col-md-4 d-flex align-items-end">
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        <i class="fas fa-search me-2"></i>Buscar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 class="h4 fw-bold">Meus Serviços</h2>
+                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalNovoPrestador">
+                        <i class="fas fa-plus me-1"></i>Cadastrar Serviço
+                    </button>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row" id="prestadoresContainer">
+            <!-- Os cards de prestadores serão adicionados dinamicamente via JavaScript -->
+            <!-- Exemplo de card que será clonado -->
+            <div class="col-lg-4 col-md-6 mb-4 d-none" id="prestadorTemplate">
+                <div class="card prestador-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge bg-primary">Categoria</span>
+                            <small class="text-muted">Localização</small>
+                        </div>
+                        <h5 class="card-title">Título do Serviço</h5>
+                        <p class="card-text text-muted">Descrição breve do serviço oferecido...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="fw-bold text-primary">R$ 00,00</span>
+                                <span class="text-muted">/hora</span>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary btn-detalhes">Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Detalhes do Prestador -->
+    <div class="modal fade" id="modalDetalhesPrestador" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalhes do Serviço</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4 id="prestadorTitulo" class="fw-bold mb-3">Título do Serviço</h4>
+                            <p id="prestadorDescricao" class="mb-4">Descrição completa do serviço...</p>
+                            
+                            <h5 class="fw-bold mb-3">Informações do Prestador</h5>
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="flex-shrink-0">
+                                    <img src="/img/usuario.png" alt="Foto do prestador" class="rounded-circle">
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="mb-0 fw-bold" id="prestadorNome">Nome do Prestador</h6>
+                                    <small class="text-muted" id="prestadorContato">
+                                        <i class="fas fa-phone me-1"></i> (11) 99999-9999
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div clasds="col-md-4">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="fw-bold">Detalhes</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="fas fa-tag text-primary me-2"></i>
+                                            <span id="prestadorCategoria">Categoria</span>
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                            <span id="prestadorLocalizacao">Localização</span>
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-money-bill-wave text-primary me-2"></i>
+                                            <span id="prestadorPreco">R$ 00,00</span> /hora
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-clock text-primary me-2"></i>
+                                            <span id="prestadorDisponibilidade">Disponibilidade</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-danger btn-excluir">Excluir Serviço</button>
+                    <button type="button" class="btn btn-primary">Editar Serviço</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Cadastrar Prestador -->
+    <div class="modal fade" id="modalNovoPrestador" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cadastrar Serviço</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formNovoPrestador">
+                        <div class="mb-3">
+                            <label for="novoPrestadorNome" class="form-label">Seu Nome</label>
+                            <input type="text" class="form-control" id="novoPrestadorNome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="novoPrestadorTitulo" class="form-label">Título do Serviço</label>
+                            <input type="text" class="form-control" id="novoPrestadorTitulo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="novoPrestadorCategoria" class="form-label">Categoria</label>
+                            <select id="novoPrestadorCategoria" class="form-select" required>
+                                <option value="">Selecione uma categoria</option>
+                                <option value="administrativo">Serviços Administrativos</option>
+                                <option value="limpeza">Limpeza e Conservação</option>
+                                <option value="logistica">Logística e Transporte</option>
+                                <option value="industrial">Serviços Industriais</option>
+                                <option value="especializada">Mão de Obra Especializada</option>
+                                <option value="obra">Serviços de Apoio à Obra</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="novoPrestadorDescricao" class="form-label">Descrição</label>
+                            <textarea class="form-control" id="novoPrestadorDescricao" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="novoPrestadorLocalizacao" class="form-label">Localização</label>
+                            <input type="text" class="form-control" id="novoPrestadorLocalizacao" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="novoPrestadorContato" class="form-label">Contato</label>
+                            <input type="text" class="form-control" id="novoPrestadorContato" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="novoPrestadorPreco" class="form-label">Preço (por hora)</label>
+                            <input type="text" class="form-control" id="novoPrestadorPreco" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="novoPrestadorDisponibilidade" class="form-label">Disponibilidade</label>
+                            <input type="text" class="form-control" id="novoPrestadorDisponibilidade" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnSalvarPrestador">Cadastrar Serviço</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Clique Serviços. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script-oferta.js"></script>
+</body>
+</html>
